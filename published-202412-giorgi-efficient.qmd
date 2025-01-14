@@ -731,32 +731,32 @@ We now present the main @alg-randomized implemented in the `popsim` function of 
 #| pdf-line-number: true
 
 \begin{algorithm}
-\caption{Randomized IBM simulation algorithm.}
+\caption{Randomized IBM simulation algorithm}
 \begin{algorithmic}
     \State \textbf{Input:} Initial population $Z_0$, horizon $T > 0$, and events described by
-    \State Intensity functions and bounds $(\lambda^e, \bar \lambda^e)$ for $e \in \mathcal{E}$, $(W^e, \bar W^e)$ for $e \in \mathcal{E}_W$ and $(\mu^e, \bar \mu^e)$ for $e \in \mathcal{P}$ 
+    \State Intensity functions and bounds $(\lambda^e, \bar \lambda^e)$ for $e \in \mathcal{E}$, $(W^e, \bar W^e)$ for $e \in \mathcal{E}_W$ and $(\mu^e, \bar \mu^e)$ for $e \in \mathcal{P}$
     \State Event action functions $\phi^e(t, I)$ for $e \in \mathcal{E} \cup \mathcal{E}_W \cup \mathcal{P}$
     \State \textbf{Output:} Population $Z_T$
-    \State Initialization $T_0 \longleftarrow 0$, $\bar T_0 \longleftarrow 0$ 
+    \State Initialization $T_0 \longleftarrow 0$, $\bar T_0 \longleftarrow 0$
     \While{$T_k < T$}
         \Repeat
             \State increment iterative variable $\ell \longleftarrow \ell+1$
             \State compute next proposed time $\bar T_{\ell} \longleftarrow \bar T_{\ell-1} + \mathcal{E}\big(\bar \Lambda(N_{T_k}) \big)$
             \State draw an individual index $\bar K_\ell \sim \mathcal{U}(\{1,\dots,N_{T_k}\})$
-            \State draw a proposed event $\bar E_\ell \sim \mathcal{U}\{p_e\}$ with $p_e = \frac{\bar \mu^e \mathbf{1}_{e \in \mathcal{P}} + \bar \lambda^e  N_{T_k}\mathbf{1}_{e \in \mathcal{E}} + \bar W^e (N_{T_k})^2 \mathbf{1}_{e \in \mathcal{E}_W}}{\bar \Lambda(N_{T_k})}$ 
+            \State draw a proposed event $\bar E_\ell \sim \mathcal{U}\{p_e\}$ with $p_e = \frac{\bar \mu^e \mathbf{1}_{e \in \mathcal{P}} + \bar \lambda^e  N_{T_k}\mathbf{1}_{e \in \mathcal{E}} + \bar W^e (N_{T_k})^2 \mathbf{1}_{e \in \mathcal{E}_W}}{\bar \Lambda(N_{T_k})}$
             \If{$\bar E_\ell \in \mathcal{E}$ (without interaction)}
-                \State draw $\bar \Theta_\ell \sim \mathcal{U}\big([0, \bar \lambda^{\bar E_\ell}] \big)$ 
-                \State \emph{accepted} $\longleftarrow \bar \Theta_\ell \le \lambda^{\bar E_\ell}(\bar T_\ell, I_{\bar K_\ell})$ 
+                \State draw $\bar \Theta_\ell \sim \mathcal{U}\big([0, \bar \lambda^{\bar E_\ell}] \big)$
+                \State \textit{accepted} $\longleftarrow \bar \Theta_\ell \le \lambda^{\bar E_\ell}(\bar T_\ell, I_{\bar K_\ell})$ 
             \EndIf
             \If{$\bar E_\ell \in \mathcal{E}_W$ (with interaction)}
                 \State draw $(\bar \Theta_\ell, J_\ell) \sim  \mathcal{U}\big([0, \bar W^{\bar E_\ell}] \times \{1, \dots, N_{T_k}\} \big)$
-                \State \emph{accepted} $\longleftarrow \bar \Theta_\ell \le W^{\bar E_\ell}(\bar T_\ell, I_{\bar K_\ell}, I_{J_\ell})$
+                \State \textit{accepted} $\longleftarrow \bar \Theta_\ell \le W^{\bar E_\ell}(\bar T_\ell, I_{\bar K_\ell}, I_{J_\ell})$
             \EndIf
             \If{$\bar E_\ell \in \mathcal{P}$ (Poissonian intensity)}
                 \State draw $\bar \Theta_\ell \sim \mathcal{U}\big([0, \bar \mu^{\bar E_\ell}] \big)$ 
-                \State \emph{accepted} $\longleftarrow \bar \Theta_\ell \le \mu^{\bar E_\ell}(\bar T_\ell)$
+                \State \textit{accepted} $\longleftarrow \bar \Theta_\ell \le \mu^{\bar E_\ell}(\bar T_\ell)$
             \EndIf
-        \Until{accepted} 
+        \Until{accepted}
         \State increment iterative variable $k \longleftarrow k+1$
         \State record $(T_k, E_k, I_k) \longleftarrow (\bar T_{\ell}, \bar E_\ell, \bar I_{\bar K_\ell})$ as accepted time, event and individual
         \State update the population $Z_{T_k} = Z_{T_{k-1}} + \phi^{E_k}(T_k, I_k)$
@@ -1661,7 +1661,6 @@ When the transition probability kernel $K$ does not depend on the time: $K(t, A)
 
 The preceding proposition thus yields a straightforward iterative simulation procedure for a Marked Poisson process on $[0,T]\times F$ with mean measure $\mu(\mathrm{d}t, \mathrm{d}y) = c \mathrm{d}t K(t, \mathrm{d}y)$ and $c>0$. The procedure is described in @alg-marked-poisson.
 
-
 ```pseudocode
 #| label: alg-marked-poisson
 #| html-indent-size: "1.2em"
@@ -1671,7 +1670,6 @@ The preceding proposition thus yields a straightforward iterative simulation pro
 #| html-no-end: false
 #| pdf-placement: "htb!"
 #| pdf-line-number: true
-
 \begin{algorithm}
 \caption{Simulation of Marked Poisson measure}
 \begin{algorithmic}
@@ -1685,11 +1683,7 @@ The preceding proposition thus yields a straightforward iterative simulation pro
     \EndWhile
 \end{algorithmic}
 \end{algorithm}
-``` 
-
-
-
-
+```
 
 ![Example of Marked Poisson measure on $[0,T]$ with $m(\mathrm{d} t) = L \mathrm{d} t$ (jump times occur at Poisson arrival times of rate $L$) and with $\nu(\mathrm{d} y) = \frac{1}{L} \mathbf{1}_{[0, L]}(y) \mathrm{d} y$ (marks are drawn uniformly on $[0,L]$).
 The mean measure is then $\mu(\mathrm{d} t, \mathrm{d} y) = \mathrm{d} t {1}_{[0,L]}(y) \mathrm{d} y$.](img/plot_poisson.png){#fig-poisson}
