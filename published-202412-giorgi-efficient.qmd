@@ -153,7 +153,6 @@ params <- list(
 
 In a second step, the model is created by calling the function `mk_model`. A `cpp` source code is automatically created through a template mechanism based on the events and parameters, subsequently compiled using the `sourceCpp` function from the `Rcpp` package.
 ```{r}
-options(verbose = TRUE)
 birth_death_model <- mk_model(
   characteristics = c("male" = "bool"),
   events = list(death_event, birth_event),
