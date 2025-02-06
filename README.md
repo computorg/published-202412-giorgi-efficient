@@ -23,7 +23,7 @@ providing a user-friendly interface.`
 
 [![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/computorg/published-202412-giorgi-efficient/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/computorg/published-202412-giorgi-efficient)
 [![build status](https://github.com/computorg/published-202412-giorgi-efficient/actions/workflows/build.yml/badge.svg)](https://github.com/computorg/published-202412-giorgi-efficient)
-[![DOI:10.57750/sfxn-1t05]([https://img.shields.io/badge/DOI-10.57750/sfxn--1t05.svg](https://img.shields.io/badge/DOI-10.57750/sfxn--1t05-034E79.svg))](https://doi.org/10.57750/sfxn-1t05)
+[![DOI:10.57750/sfxn-1t05](https://img.shields.io/badge/DOI-10.57750/sfxn--1t05.svg)](https://doi.org/10.57750/sfxn-1t05)
 [![HTML](https://img.shields.io/badge/article-HTML-034E79)](https://computo.sfds.asso.fr/published-202412-giorgi-efficient/)
 [![PDF](https://img.shields.io/badge/article-PDF-034E79)](https://computo.sfds.asso.fr/published-202412-giorgi-efficient/published-202412-giorgi-efficient.pdf)
 [![reviews](https://img.shields.io/badge/review-report%201-blue)](https://github.com/computorg/published-202412-giorgi-efficient/issues/2)
