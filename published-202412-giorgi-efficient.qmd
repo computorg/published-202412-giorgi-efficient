@@ -30,7 +30,7 @@ author:
       - name: Sorbonne Université, CNRS
         department: Laboratoire de Probabilités, Statistique et Modélisation
         url: https://www.lpsm.paris/
-date: 2024-12-01
+date: 01-27-2025
 date-modified: last-modified
 description: |
     This document provides a full description of the Stochastic Individual-Based Models (IBMs) that can be implemented in the IBMPopSim package. A unified mathematical and simulation framework is given, with a detailed description of the simulation algorithm. Examples of applications for the package are also provided, showing the performance and flexibility of IBMPopSim. 
@@ -41,8 +41,7 @@ citation:
   type: article-journal
   container-title: "Computo"
   doi: "10.57750/sfxn-1t05"
-  url: https://computo.sfds.asso.fr/published-202412-giorgi-efficient
-  publisher: "Société Française de Statistique"
+  publisher: "French Statistical Society"
   issn: "2824-7795"
 bibliography: references.bib
 github-user: computorg
