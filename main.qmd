@@ -342,7 +342,7 @@ $$
     \Lambda_t(Z_t) = \sum_{e\in \mathcal{P}} \mu^e(t) + \sum_{e \in \mathcal E} \Big(\sum_{k=1}^{N_t} \lambda^e(t, I_k)\Big) + \sum_{e \in \mathcal E_W} \Big(\sum_{k=1}^{N_t}\sum_{j=1}^{N_t} W^e(t, I_k, I_j)\Big).
 $$ {#eq-global-ev-intensity}
 An important point is that for events $e \in \mathcal E$ without interactions, the global event intensity $\Lambda^e_t(Z_t) = \sum_{k=1}^{N_t} \lambda^e(t, I_k)$ is _of order_ $N_t^a$ defined in @eq-Nta (number of alive individuals at time $t$). On the other hand, for events $e \in \mathcal{E}_W$ with interactions, $\Lambda^e_t(Z_t) = \sum_{k=1}^{N_t}\sum_{j=1}^{N_t} W^e(t, I_k, I_j)$ is of order $(N_t^a)^2$. 
-Informally, this means that when the population size increases, events with interaction are more costly to simulate. Furthermore, the numerous computations of the interaction kernel $W^e$ can also be computationally costly. The randomized @alg-randomized, detailed in
+Informally, this means that when the population size increases, events with interaction are more costly to simulate. Furthermore, the numerous computations of the interaction kernel $W^e$ can also be computationally costly. The randomized @algo-randomized, detailed in
 @sec-simulation-randomized, allows us to overcome these limitations.
 
 :::
@@ -456,7 +456,7 @@ $$
 $$
 :::
 
-The proof of @lem-non-explosion, detailed in Appendix @sec-prf-lem-non-explosion is more technical and relies on a pathwise comparison result, generalizing those obtained in [@KaaElK20]. An alternative pathwise representation of the population process, inspired by the randomized @alg-randomized is given as well in @prp-randomized.
+The proof of @lem-non-explosion, detailed in Appendix @sec-prf-lem-non-explosion is more technical and relies on a pathwise comparison result, generalizing those obtained in [@KaaElK20]. An alternative pathwise representation of the population process, inspired by the randomized @algo-randomized is given as well in @prp-randomized.
 
 # Population simulation {#sec-simulation}
 
@@ -558,10 +558,10 @@ $$
 is an inhomogeneous Poisson process of intensity vector $(\lambda_j(t))_{j\in\mathcal{J}}$ on $[0,T]$.
 :::
 
-@prp-thinning-vector yields the following simulation @alg-thinning2 for multivariate Poisson processes.
+@prp-thinning-vector yields the following simulation @algo-thinning2 for multivariate Poisson processes.
 
 ```pseudocode
-#| label: alg-thinning2
+#| label: algo-thinning2
 #| html-indent-size: "1.2em"
 #| html-comment-delimiter: "//"
 #| html-line-number: true
@@ -590,7 +590,7 @@ is an inhomogeneous Poisson process of intensity vector $(\lambda_j(t))_{j\in\ma
 ```
 
 ::: {#rem-alternate-thinning}
-The acceptance/rejection @alg-thinning2 can be efficient when the functions $\lambda_j$ are of different order, and thus bounded by different $\bar \lambda_j$. However, it is important to note that the simulation of the discrete random variables $(\bar J_\ell)$ can be costly (compared to a uniform law) when $\mathcal{J}$ is large, for instance when an individual is drawn from a large population. In this case, an alternative is to choose the same bound $\bar \lambda_j= \bar \lambda$ for all $j \in \mathcal{J}$. Then the marks $(\bar J_\ell, \bar \Theta_\ell)$ are *i.i.d.* uniform variables on $\mathcal{J}\times [0,\bar \lambda]$, faster to simulate.
+The acceptance/rejection @algo-thinning2 can be efficient when the functions $\lambda_j$ are of different order, and thus bounded by different $\bar \lambda_j$. However, it is important to note that the simulation of the discrete random variables $(\bar J_\ell)$ can be costly (compared to a uniform law) when $\mathcal{J}$ is large, for instance when an individual is drawn from a large population. In this case, an alternative is to choose the same bound $\bar \lambda_j= \bar \lambda$ for all $j \in \mathcal{J}$. Then the marks $(\bar J_\ell, \bar \Theta_\ell)$ are *i.i.d.* uniform variables on $\mathcal{J}\times [0,\bar \lambda]$, faster to simulate.
 :::
 
 ## Simulation algorithm {#sec-simulation-algo}
@@ -604,7 +604,7 @@ $$ {#eq-def-intensity}
 with
 $\bar \Lambda(n) = \big(\sum_{e \in \mathcal{E}} \bar \lambda^e \big) n + \big( \sum_{e \in \mathcal{E}_W} \bar W^e \big) n^2$.
 
-One of the main difficulty is that the intensity of events is not deterministic as in the case of inhomogeneous Poisson processes, but a function $\Lambda_t(Z_t)$ of the population state, bounded by a function which also depends on the population size. However, the @alg-thinning2 can be adapted to simulate the IBM. The construction is done by induction, by conditioning on the state of the population $Z_{T_k}$ at the $k$th event time $T_k$ ($T_0 = 0$).
+One of the main difficulty is that the intensity of events is not deterministic as in the case of inhomogeneous Poisson processes, but a function $\Lambda_t(Z_t)$ of the population state, bounded by a function which also depends on the population size. However, the @algo-thinning2 can be adapted to simulate the IBM. The construction is done by induction, by conditioning on the state of the population $Z_{T_k}$ at the $k$th event time $T_k$ ($T_0 = 0$).
 
 We first present the construction of the first event at time $T_1$.
 
@@ -636,15 +636,15 @@ $$
 $$
 - $(\bar \Theta_\ell)_{\ell \in {\mathbb{N}}^*}$ are independent uniform random variables, with $\bar \Theta_\ell \sim \mathcal{U}([0,\bar \lambda^{\bar E_\ell}]).$
 
-Since the first event is the first jump of $N^0$, by @prp-thinning-vector and @alg-thinning2, the first event time $T_1$ is the first jump time $\bar T_\ell$ of $\bar Q^0$ such that $\bar \Theta_\ell \leq \lambda^{\bar E_\ell}_{\bar T_\ell}(I_{\bar K_\ell}, Z_0)$.
+Since the first event is the first jump of $N^0$, by @prp-thinning-vector and @algo-thinning2, the first event time $T_1$ is the first jump time $\bar T_\ell$ of $\bar Q^0$ such that $\bar \Theta_\ell \leq \lambda^{\bar E_\ell}_{\bar T_\ell}(I_{\bar K_\ell}, Z_0)$.
 
 At $T_1 =\bar T_{\ell}$, the event $\bar E_\ell$ occurs to the individual $I_{\bar K_\ell} = (\tau^b, \infty, x)$. For instance, if $\bar E_\ell =d$, a death/exit event occurs, so that $Z_{T_1} = Z_{0} + \delta_{(\tau^b, T_1, x)} - \delta_{I_{\bar K_\ell}}$ and $N_{T_1} = N_{0}$. If $\bar E_\ell =b$ or $en$, a birth or entry event occurs, so that $N_{T_1} = N_{0} + 1$, and a new individual $I_{N_0+1}$ is added to the population, chosen as described in @tbl-event-action. 
 Finally, if $\bar E_\ell=s$, a swap event occurs, the population size stays constant and $I_{\bar K_\ell}$ is replaced by an individual $I_{\bar K_\ell}'$, chosen as described in @tbl-event-action.
 
-The steps for simulating the first event in the population can be iterated in order to simulate the population. At the $k$th step, the same procedure is repeated to simulate the $k$th event, starting from a population $Z_{T_{k-1}}$ of size $N_{T_{k-1}}$. The algorithm is summarized in @alg-interaction.
+The steps for simulating the first event in the population can be iterated in order to simulate the population. At the $k$th step, the same procedure is repeated to simulate the $k$th event, starting from a population $Z_{T_{k-1}}$ of size $N_{T_{k-1}}$. The algorithm is summarized in @algo-interaction.
 
 ```pseudocode
-#| label: alg-interaction
+#| label: algo-interaction
 #| html-indent-size: "1.2em"
 #| html-comment-delimiter: "//"
 #| html-line-number: true
@@ -678,7 +678,7 @@ The steps for simulating the first event in the population can be iterated in or
 ```
 
 ::: {#thm-interaction}
-A population process $(Z_t)_{t \in [0,T]}$ simulated by the @alg-interaction is an exact solution of the SDE @eq-sde-eq-Z.
+A population process $(Z_t)_{t \in [0,T]}$ simulated by the @algo-interaction is an exact solution of the SDE @eq-sde-eq-Z.
 :::
 
 The proof of @thm-interaction is detailed in the Appendix @sec-prf-thm-interaction.
@@ -717,10 +717,10 @@ Equivalently, we can write this probability as $\mathbb{P}\big(\tilde \Theta_\el
 The efficiency of the randomization procedure increases with the population homogeneity. If the function $W^e$ varies little according to the individuals in the population, the randomization approach is very efficient in practice, especially when the population is large.
 :::
 
-We now present the main @alg-randomized implemented in the `popsim` function of the `IBMPopSim` package in the case where events arrive with individual intensities, but also with interactions (using randomization) and Poisson intensities. In this general case, $\bar \Lambda(n)$ is defined by @eq-def-bar-Lambda.
+We now present the main @algo-randomized implemented in the `popsim` function of the `IBMPopSim` package in the case where events arrive with individual intensities, but also with interactions (using randomization) and Poisson intensities. In this general case, $\bar \Lambda(n)$ is defined by @eq-def-bar-Lambda.
 
 ```pseudocode
-#| label: alg-randomized
+#| label: algo-randomized
 #| html-indent-size: "1.2em"
 #| html-comment-delimiter: "//"
 #| html-line-number: true
@@ -765,16 +765,16 @@ We now present the main @alg-randomized implemented in the `popsim` function of 
 ```
 
 ::: {#prp-randomized}
-The population processes $(Z_t)_{t\in [0,T]}$ simulated by the @alg-interaction and @alg-randomized have the same law.
+The population processes $(Z_t)_{t\in [0,T]}$ simulated by the @algo-interaction and @algo-randomized have the same law.
 :::
 
 ::: {.proof}
-The only difference between @alg-interaction and @alg-randomized is in the acceptance/rejection step of proposed events, in the presence of interactions.
-In @alg-randomized , a proposed event $(\bar T_\ell, \bar E_\ell, \bar K_\ell)$, with $\bar E_l \in \mathcal{E}_W$ (an event with interaction), is accepted as a true event in the population if
+The only difference between @algo-interaction and @algo-randomized is in the acceptance/rejection step of proposed events, in the presence of interactions.
+In @algo-randomized , a proposed event $(\bar T_\ell, \bar E_\ell, \bar K_\ell)$, with $\bar E_l \in \mathcal{E}_W$ (an event with interaction), is accepted as a true event in the population if
 $$
     \bar \Theta_\ell \le W^{\bar E_\ell}(\bar T_\ell, I_{\bar K_\ell}, I_{\bar J_\ell}), \text{ with } (\bar \Theta_\ell, \bar J_\ell) \sim  \mathcal{U}\big([0, \bar W^{\bar E_\ell}] \times \{1, \dots, N_{T_k}\} \big).
 $$
-By @eq-randomized-event, the probability of accepting this event is the same than in @alg-interaction, which achieves the proof.
+By @eq-randomized-event, the probability of accepting this event is the same than in @algo-interaction, which achieves the proof.
 :::
 
 
@@ -906,7 +906,7 @@ death_interaction_code <- "result = max(J.size - I.size, 0.);"
 ```
 the death intensity of an individual `I` is the result of the competition between individuals, depending on a characteristic named `size`, as defined in @eq-ex-interaction. 
 
-The argument `interaction_type`, set by default at `random`, is the algorithm choice for simulating the model. When `interaction_type=full`, the simulation follows @alg-interaction, `interaction_type=random` it follows @alg-randomized.
+The argument `interaction_type`, set by default at `random`, is the algorithm choice for simulating the model. When `interaction_type=full`, the simulation follows @algo-interaction, `interaction_type=random` it follows @algo-randomized.
 In most cases, the `random` algorithm is much faster than the `full` algorithm. For instance in the example of @sec-example-interaction the `random` algorithm is 40 times faster on average than the `full` algorithm, on a set of standard parameters. This allows in particular to explore larger parameter sets and population sizes, while avoiding the explosion of computation time.
 
 _Events creation with Poisson and Inhomogeneous Poisson intensity_  
@@ -1552,9 +1552,9 @@ ggplot(pop_out) + geom_segment(
 ```
 
 In this example, the randomized
-@alg-randomized allows for much faster computation
+@algo-randomized allows for much faster computation
 times than the model implemented below with
-@alg-interaction ("full" algorithm):
+@algo-interaction ("full" algorithm):
 
 ```{r}
 death_event_full <- mk_event_interaction(type = "death",
@@ -1581,7 +1581,7 @@ print(paste("The full algorithm is " ,format(sim_out_full$logs["duration_ns"]/si
 ```
 
 In @fig-fullvsrandom, the two algorithms are compared for different population sizes.  We progressively decrease the value of the mortality rate parameter $\beta$ and increase the birth rate parameter $\alpha$. Starting with the values provided in @FerTra09, $\alpha=1$ and $\beta=2/300$, resulting in a stationary population size of approximately $N=360$ individuals for a sample of 50 simulations, we can easily increase the stationary population size to approximately $N=2600$ individuals with $\alpha=2$ and $\beta=1/300$.^[The choices $(\alpha, \beta) \in \{(1,2/300),(1, 1/300), (1.5, 1/300), (2, 1/300)\}$ lead to the stationary population sizes $N \in \{360, 900, 1800, 2600\}$. For each set of parameters, we generated a new initial population, which was used for a benchmark of 50 simulations with both randomized and full algorithm. The simulations run on a Intel Core i7-8550U CPU 1.80GHz × 8 processor, with 15.3 GiB of RAM, under Debian GNU/Linux 11.] 
-In the log-scaled figure, we can observe the trend of computation time as a function of the population size $N$, which is linear for the randomized algorithm and quadratic for the full one ( @alg-interaction). We can also see that the randomized version of the algorithm is between 17 to 100 times faster than the full one in this example, taking only 2 seconds in average for the randomized version versus 211 seconds for @alg-interaction for the biggest population size ($N=2600$) and $T=500$.
+In the log-scaled figure, we can observe the trend of computation time as a function of the population size $N$, which is linear for the randomized algorithm and quadratic for the full one ( @algo-interaction). We can also see that the randomized version of the algorithm is between 17 to 100 times faster than the full one in this example, taking only 2 seconds in average for the randomized version versus 211 seconds for @algo-interaction for the biggest population size ($N=2600$) and $T=500$.
 
 ![Full vs random algorithm computation time](img/time_pop_size.png){#fig-fullvsrandom width=80%}
 
@@ -1658,10 +1658,10 @@ is an inhomogeneous Poisson process of rate $\Lambda(t)= \nu(t, F)\tilde  \Lambd
 When the transition probability kernel $K$ does not depend on the time: $K(t, A) = \nu(A)$ for some probability measure $\nu$, then the marks $(\Theta_k)_{k \ge 1}$ form an *i.i.d.* sequence with distribution $\nu$, independent of $(T_k)_{k \ge 1}$.
 :::
 
-The preceding proposition thus yields a straightforward iterative simulation procedure for a Marked Poisson process on $[0,T]\times F$ with mean measure $\mu(\mathrm{d}t, \mathrm{d}y) = c \mathrm{d}t K(t, \mathrm{d}y)$ and $c>0$. The procedure is described in @alg-marked-poisson.
+The preceding proposition thus yields a straightforward iterative simulation procedure for a Marked Poisson process on $[0,T]\times F$ with mean measure $\mu(\mathrm{d}t, \mathrm{d}y) = c \mathrm{d}t K(t, \mathrm{d}y)$ and $c>0$. The procedure is described in @algo-marked-poisson.
 
 ```pseudocode
-#| label: alg-marked-poisson
+#| label: algo-marked-poisson
 #| html-indent-size: "1.2em"
 #| html-comment-delimiter: "//"
 #| html-line-number: true
@@ -1855,7 +1855,7 @@ The proof of @thm-EqZrandomized  follows the same steps than the proof of
 For ease of notation, we prove
 the case when $\mathcal{P} =\emptyset$ (there are no events with Poisson
 intensity).\
-Let $Z$ be the population process obtained by @alg-interaction, and $(T_n)_{n\geq 0}$ the sequence
+Let $Z$ be the population process obtained by @algo-interaction, and $(T_n)_{n\geq 0}$ the sequence
 of its jump times ($T_0=0$).\
 **Step 1** Let $T_1$ be the first event time in the population, with its
 associated marks defining the type $E_1$ of the event and the individual
