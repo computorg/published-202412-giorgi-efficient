@@ -1,5 +1,6 @@
 project:
   title: "article"
-
-
-
+  render:
+    - main.qmd
+    - README.qmd
+status: published
