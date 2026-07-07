@@ -35,7 +35,7 @@ author:
       - name: Sorbonne Université, CNRS
         department: Laboratoire de Probabilités, Statistique et Modélisation
         url: https://www.lpsm.paris/
-date: 01-27-2025
+date: 2025-01-27
 abstract: >+
     The `R` Package `IBMPopSim` facilitates the simulation of the random evolution of heterogeneous populations using stochastic Individual-Based Models (IBMs). The package enables users to simulate population evolution, in which individuals are characterized by their age and some characteristics, and the population is modified by different types of events, including births/arrivals, death/exit events, or changes of characteristics. The frequency at which an event can occur to an individual can depend on their age and characteristics, but also on the characteristics of other individuals (interactions). Such models have a wide range of applications in fields including  actuarial science, biology, ecology or epidemiology. `IBMPopSim` overcomes the limitations of time-consuming IBMs simulations by implementing new efficient algorithms  based on thinning methods, which are compiled using the `Rcpp` package while providing a user-friendly interface.
 citation:
@@ -45,6 +45,7 @@ citation:
   publisher: "French Statistical Society"
   issn: "2824-7795"
   url: "https://computo-journal.org/published-202412-giorgi-efficient/"
+  issued: "2025-01-27"
 related-identifiers:
   - relation: IsVersionOf
     type: arXiv
