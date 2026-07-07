@@ -45,5 +45,12 @@ citation:
   publisher: "French Statistical Society"
   issn: "2824-7795"
   url: "https://computo-journal.org/published-202412-giorgi-efficient/"
+related-identifiers:
+  - relation: IsVersionOf
+    type: arXiv
+    identifier: "2303.06183"
+  - relation: IsVersionOf
+    type: URL
+    identifier: "https://hal.science/hal-04033144"
 github-user: computorg
 repo: "published-202412-giorgi-efficient"
