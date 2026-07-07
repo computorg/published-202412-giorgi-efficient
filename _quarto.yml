@@ -4,3 +4,45 @@ project:
     - main.qmd
     - README.qmd
 status: published
+
+title: "Efficient simulation of individual-based population models"
+author:
+  - name: Daphné Giorgi
+    corresponding: true
+    email: daphne.giorgi@sorbonne-universite.fr
+    url: https://perso.lpsm.paris/~giorgi/
+    affiliations:
+      - name: Sorbonne Université, CNRS
+        department: Laboratoire de Probabilités, Statistique et Modélisation
+        url: https://www.lpsm.paris/
+  - name: Sarah Kaakai
+    corresponding: true
+    email: kaakai@math.univ-paris13.fr
+    url: https://www.math.univ-paris13.fr/~kaakai/
+    affiliations:
+      - name: Université Sorbonne Paris Nord, CNRS
+        department: Laboratoire Analyse, Géométrie et Applications
+        url: https://www.math.univ-paris13.fr/
+      - name: Ecole Polytechnique, CNRS
+        department: Centre de Mathématiques Appliquées
+        url: https://cmap.ip-paris.fr/
+  - name: Vincent Lemaire
+    corresponding: true
+    email: vincent.lemaire@sorbonne-universite.fr
+    url: https://perso.lpsm.paris/~vlemaire/
+    orcid: 0000-0002-0433-7722
+    affiliations:
+      - name: Sorbonne Université, CNRS
+        department: Laboratoire de Probabilités, Statistique et Modélisation
+        url: https://www.lpsm.paris/
+date: 01-27-2025
+abstract: >+
+    The `R` Package `IBMPopSim` facilitates the simulation of the random evolution of heterogeneous populations using stochastic Individual-Based Models (IBMs). The package enables users to simulate population evolution, in which individuals are characterized by their age and some characteristics, and the population is modified by different types of events, including births/arrivals, death/exit events, or changes of characteristics. The frequency at which an event can occur to an individual can depend on their age and characteristics, but also on the characteristics of other individuals (interactions). Such models have a wide range of applications in fields including  actuarial science, biology, ecology or epidemiology. `IBMPopSim` overcomes the limitations of time-consuming IBMs simulations by implementing new efficient algorithms  based on thinning methods, which are compiled using the `Rcpp` package while providing a user-friendly interface.
+citation:
+  type: article-journal
+  container-title: "Computo"
+  doi: "10.57750/sfxn-1t05"
+  publisher: "French Statistical Society"
+  issn: "2824-7795"
+github-user: computorg
+repo: "published-202412-giorgi-efficient"
