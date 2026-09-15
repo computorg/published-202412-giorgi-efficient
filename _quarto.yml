@@ -57,3 +57,19 @@ related-identifiers:
     identifier: "https://hal.science/hal-04033144"
 github-user: computorg
 repo: "published-202412-giorgi-efficient"
+subtitle: "The `R` package `IBMPopSim`"
+date-modified: last-modified
+description: |
+    This document provides a full description of the Stochastic Individual-Based Models (IBMs) that can be implemented in the IBMPopSim package. A unified mathematical and simulation framework is given, with a detailed description of the simulation algorithm. Examples of applications for the package are also provided, showing the performance and flexibility of IBMPopSim. 
+keywords: [Individual-based models, stochastic simulation, population dynamics, Poisson measures, thinning method, actuarial science, insurance portfolio simulation]
+bibliography: references.bib
+format:
+    computo-html: default
+    computo-pdf: default
+crossref:
+    cnj-title: Assumption
+    cnj-prefix: Assumption 
+execute:
+    eval: true
+    echo: true
+    warning: false
